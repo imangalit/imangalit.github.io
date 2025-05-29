@@ -30,4 +30,64 @@
     .button {
       background-color: #2980b9;
       color: white;
-      padding: 15px
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .button:hover {
+      background-color: #21618c;
+    }
+
+    .option {
+      display: block;
+      background-color: #ecf0f1;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .option:hover {
+      background-color: #d0dce4;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="content">
+    <button class="button" onclick="startTest()">Перейти к форме</button>
+  </div>
+
+  <script>
+    function startTest() {
+      const content = document.getElementById("content");
+      content.innerHTML = `
+        <h2>Как ваше настроение?</h2>
+        <div class="option" onclick="saveAnswer('Отличное')">😊 Отличное</div>
+        <div class="option" onclick="saveAnswer('Хорошее')">🙂 Хорошее</div>
+        <div class="option" onclick="saveAnswer('Нормальное')">😐 Нормальное</div>
+        <div class="option" onclick="saveAnswer('Плохое')">☹️ Плохое</div>
+      `;
+    }
+
+    function saveAnswer(answer) {
+      // Можно сохранить в localStorage или отправить на сервер
+      console.log("Ответ:", answer);
+      // Показать ссылку на форму после ответа
+      document.getElementById("content").innerHTML = `
+        <h2>Спасибо за ваш ответ!</h2>
+        <a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSchPTViu4NxHvPNpTJ7ipI-oeanxUYG8u99j14nYHFU0JZICQ/viewform?usp=header" target="_blank">
+          Заполнить Google форму
+        </a>
+      `;
+    }
+  </script>
+
+</body>
+</html>

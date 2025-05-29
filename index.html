@@ -3,62 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Форма-тест</title>
+  <title>MP3 Плеер</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(to right, #6dd5fa, #2980b9);
-      height: 100vh;
       display: flex;
-      justify-content: center;
+      height: 100vh;
       align-items: center;
-      font-family: sans-serif;
+      justify-content: center;
+      background-color: #800000; /* бордовый цвет */
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
-    .container {
-      background-color: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .option {
-      display: block;
-      background-color: #ecf0f1;
-      padding: 10px;
-      border-radius: 8px;
-      margin: 10px 0;
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      background-color: #FFD700;
+      color: #800000;
+      border-radius: 10px;
       cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: 0.3s;
     }
-    .option:hover {
-      background-color: #d0dce4;
+    button:hover {
+      background-color: #FFC300;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="content">
-    <h2>Как ваше настроение?</h2>
-    <div class="option" onclick="saveAnswer('Отличное')">😊 Отличное</div>
-    <div class="option" onclick="saveAnswer('Хорошее')">🙂 Хорошее</div>
-    <div class="option" onclick="saveAnswer('Нормальное')">😐 Нормальное</div>
-    <div class="option" onclick="saveAnswer('Плохое')">☹️ Плохое</div>
-  </div>
+
+  <button onclick="playAudio()">▶ Играть песню</button>
+  <audio id="myAudio" src="song.mp3"></audio>
 
   <script>
-    function saveAnswer(answer) {
-      fetch('/save', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ answer })
-      }).then(() => {
-        document.getElementById("content").innerHTML = `
-          <h2>Ответ сохранён!</h2>
-          <p>Спасибо за участие.</p>
-        `;
-      });
+    function playAudio() {
+      const audio = document.getElementById("myAudio");
+      audio.play();
     }
   </script>
+
 </body>
 </html>
